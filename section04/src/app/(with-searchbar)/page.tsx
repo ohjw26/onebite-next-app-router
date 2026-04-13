@@ -4,6 +4,7 @@ import { BookData } from "@/types";
 import { delay } from "@/util/delay";
 import { Suspense } from "react";
 import BookItemSkeleton from "@/components/skeleton/book-item-skeleton";
+import BookListSkeleton from "@/components/skeleton/book-list-skeleton";
 
 //export const dynamic = "force-dynamic";
 //특정 페이지의 유형을 강제로 Static, Dynamic 페이지로 설정
@@ -61,28 +62,14 @@ export default function Home() {
       <section>
         <h3>지금 추천하는 도서</h3>
         <Suspense 
-          fallback={
-            <>
-              <BookItemSkeleton />
-              <BookItemSkeleton />
-              <BookItemSkeleton />
-            </>
-          }
-        >
+          fallback={<BookListSkeleton count={3} />}>
           <RecoBooks />
         </Suspense>
       </section>
       <section>
         <h3>등록된 모든 도서</h3>
         <Suspense 
-          fallback={
-            <>
-              <BookItemSkeleton />
-              <BookItemSkeleton />
-              <BookItemSkeleton />
-            </>
-          }
-        >
+          fallback={<BookListSkeleton count={10} />}>
           <AllBooks />
         </Suspense>
       </section>
